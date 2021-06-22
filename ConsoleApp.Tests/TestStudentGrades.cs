@@ -94,7 +94,6 @@ namespace ConsoleApp.Tests
         public void TestCalculateMean()
         {
             // 1. Arrange
-            converter.MeanMarks = testMarks;
             double expectedMean = 55.0;
             // 2. Act
             converter.CalculateStats();
