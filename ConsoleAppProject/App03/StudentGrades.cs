@@ -188,9 +188,9 @@ namespace ConsoleAppProject.App03
         public void CalculateMax()
         {
             Minimum = TheirMarks[0];
-            Maximum = TheirMarks[0];
+            Maximum = TheirMarks[100];
 
-            double total = 0;
+            double total = ;
             foreach (int mark in TheirMarks)
             {
                 if (mark > Maximum) Maximum = mark;

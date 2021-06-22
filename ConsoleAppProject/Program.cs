@@ -38,6 +38,10 @@ namespace ConsoleAppProject
                 NetworkApp networkApp = new NetworkApp();
                 networkApp.DisplayMenu();
             }
+            if (choice == 3)
+            {
+                
+            }
             else
             {
                 Console.WriteLine("Please reload the program");
