@@ -94,53 +94,53 @@ namespace ConsoleApp.Tests
         public void TestCalculateMean()
         {
             // 1. Arrange
-            converter.Marks = testMarks;
+            converter.MeanMarks = testMarks;
             double expectedMean = 55.0;
             // 2. Act
             converter.CalculateStats();
             // 3. Assert
-            Assert.AreEqual(expectedMean, converter.Mean);
+            Assert.AreEqual(expectedMean, converter.MeanMarks);
         }
 
         [TestMethod]
         public void TestCalculateMin()
         {
             // 1. Arrange
-            studentGrades.Marks = statsMarks;
-            int expectedMin = 10;
+            studentGrades.theirMarks = statsMarks;
+            int expectedMin = 15;
             // 2. Act
             studentGrades.CalculateMin();
             // 3. Assert
-            Assert.AreEqual(expectedMin, studentGrades.Min);
+            Assert.AreEqual(expectedMin, studentGrades.Minimum);
         }
 
         [TestMethod]
         public void TestCalculateMax()
         {
             // 1. Arrange
-            studentGrades.Marks = statsMarks;
+            studentGrades.theirMarks = statsMarks;
             int expectedMax = 100;
             // 2. Act
             studentGrades.CalculateMax();
             // 3. Assert
-            Assert.AreEqual(expectedMax, studentGrades.Max);
+            Assert.AreEqual(expectedMax, studentGrades.Maximum);
         }
 
         [TestMethod]
         public void TestGradeProfile()
         {
             // 1. Arrange
-            studentGrades.Marks = testMarks;
+            studentGrades.theirMarks = testMarks;
 
             // 2. Act
-            studentGrades.CalculateGradeProfile();
+            studentGrades.CalculateGradefile();
 
-            bool expectedProfile =  studentGrades.GradeProfile[0] == 0 &&
-                                    studentGrades.GradeProfile[1] == 3 &&
-                                    studentGrades.GradeProfile[2] == 1 &&
-                                    studentGrades.GradeProfile[3] == 1 &&
-                                    studentGrades.GradeProfile[4] == 1 &&
-                                    studentGrades.GradeProfile[5] == 4;
+            bool expectedProfile =  studentGrades.Gradefile[0] == 0 &&
+                                    studentGrades.Gradefile[1] == 3 &&
+                                    studentGrades.Gradefile[2] == 1 &&
+                                    studentGrades.Gradefile[3] == 1 &&
+                                    studentGrades.Gradefile[4] == 1 &&
+                                    studentGrades.Gradefile[5] == 4;
             // 3. Assert
             Assert.IsTrue(expectedProfile);
         }
