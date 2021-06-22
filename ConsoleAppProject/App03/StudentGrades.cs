@@ -5,22 +5,15 @@ namespace ConsoleAppProject.App03
 {
 
     /// <summary>
-    /// This is a small app to store, calculate and display
-    /// student grades. It should use an SQL database to hold the
-    /// data.
+    /// This is a small app to store, calculate and display 10
+    /// student grades.
     /// 
     /// Chris Edgley
     /// 
-    /// Outline of program:
-    /// 1. Input a student's Marks
-    /// 2. Output a student's Marks
-    /// 3. Output students stats
-    /// 4. Output grade profile
-    /// 5. Quit
     /// </summary>
     public class StudentGrades
     {
-        // Setup the application constants
+        // These will stay the stay whilst the application is running
 
         public const int Ungraded = 0;
         public const int LowestGradeD = 40;
@@ -29,7 +22,7 @@ namespace ConsoleAppProject.App03
         public const int LowestGradeA = 70;
         public const int HighestGrade = 100;
 
-        // Setup the main properties
+        // This will be able to grabbed from the program
 
         public double MeanMarks { get; set; }
         public int Minimum { get; set; }
@@ -55,8 +48,9 @@ namespace ConsoleAppProject.App03
         }
 
         /// <summary>
-        /// Output a heading on the console app version
-        /// using the consolehelper
+        /// Using the console helper, this helps establish a
+        /// heading for the user to see once they load the 
+        /// program
         /// </summary>
         public void OutputHeading()
         {
@@ -65,21 +59,20 @@ namespace ConsoleAppProject.App03
         }
 
         /// <summary>
-        /// Ask the user for the TheirMarks for 10 MyStudents plus
-        /// display the student number in the input string
+        /// This allows the user to enter marks for all 10 students at once
         /// </summary>
         public void EnterTheMarks()
         {
             Console.WriteLine("Please enter the student's Marks: ");
-            // Create a loop to enter the 10 MyStudents TheirMarks
+            
             for (int i = 0; i < MyStudents.Length; i++)
             {
-                // Thanks StackOverflow for the 'Cast' reminder 😁
-                // Limit the input between Minimum & Maximum TheirMarks (0 to 100)
-                // NOTE: the consolehelper is being used to ask the user for
-                // each student (their number and name are shown inline
-                // to make input easier to read. Note the student number
-                // has had to be tweaked at it started at 0.
+                /// <summary>
+                ///   This establishes a query to ask the user for
+                ///   a specific student's mark. This query has
+                ///   parameters reaching from 0-100 so the user
+                ///   can not exceed those parameters
+                /// </summary>
                 TheirMarks[i] = (int)ConsoleHelper.InputNumber
                     ($"\nPlease enter the mark for student #" + (i + 1) + $" {MyStudents[i]}: ", 0, 100);
             }
@@ -87,15 +80,15 @@ namespace ConsoleAppProject.App03
             SelectChoice();
         }
         /// <summary>
-        /// Displays all the MyStudents along with their Marks for the user to see
+        /// This method can compared 
         /// </summary>
         public void OutputTheseMarks()
         {
 
             ConsoleHelper.OutputTitle("\nStudent Grades");
 
-            // foreach loop to go through the list of Students and grades
-            // Call the ConvertToGrades method to convert the marks to grade values
+            /// foreach loop to go through the list of Students and grades
+            /// Call the ConvertToGrades method to convert the marks to grade values
 
             for (int i = 0; i < MyStudents.Length; i++)
             {
