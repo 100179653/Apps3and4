@@ -106,7 +106,7 @@ namespace ConsoleApp.Tests
         public void TestCalculateMin()
         {
             // 1. Arrange
-            studentGrades.theirMarks = statsMarks;
+            studentGrades.TheirMarks = statsMarks;
             int expectedMin = 15;
             // 2. Act
             studentGrades.CalculateMin();
@@ -118,7 +118,7 @@ namespace ConsoleApp.Tests
         public void TestCalculateMax()
         {
             // 1. Arrange
-            studentGrades.theirMarks = statsMarks;
+            studentGrades.TheirMarks = statsMarks;
             int expectedMax = 100;
             // 2. Act
             studentGrades.CalculateMax();
@@ -130,7 +130,7 @@ namespace ConsoleApp.Tests
         public void TestGradeProfile()
         {
             // 1. Arrange
-            studentGrades.theirMarks = testMarks;
+            studentGrades.TheirMarks = testMarks;
 
             // 2. Act
             studentGrades.CalculateGradefile();

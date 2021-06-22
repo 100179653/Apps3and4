@@ -34,14 +34,14 @@ namespace ConsoleAppProject.App03
         public double MeanMarks { get; set; }
         public int Minimum { get; set; }
         public int Maximum { get; set; }
-        public string[] myStudents { get; set; }
-        public int[] theirMarks { get; set; }
+        public string[] MyStudents { get; set; }
+        public int[] TheirMarks { get; set; }
         public int[] Gradefile { get; set; }
 
   
         public StudentGrades()
         {
-            myStudents = new string[]
+            MyStudents = new string[]
             {
                 "Jo", "Bob",
                 "Katt", "Stacey",
@@ -51,7 +51,7 @@ namespace ConsoleAppProject.App03
             };
 
             Gradefile = new int[(int)Grades.A + 1];
-            theirMarks = new int[myStudents.Length];
+            TheirMarks = new int[MyStudents.Length];
         }
 
         /// <summary>
@@ -65,29 +65,29 @@ namespace ConsoleAppProject.App03
         }
 
         /// <summary>
-        /// Ask the user for the theirMarks for 10 myStudents plus
+        /// Ask the user for the TheirMarks for 10 MyStudents plus
         /// display the student number in the input string
         /// </summary>
         public void EnterTheMarks()
         {
             Console.WriteLine("Please enter the student's Marks: ");
-            // Create a loop to enter the 10 myStudents theirMarks
-            for (int i = 0; i < myStudents.Length; i++)
+            // Create a loop to enter the 10 MyStudents TheirMarks
+            for (int i = 0; i < MyStudents.Length; i++)
             {
                 // Thanks StackOverflow for the 'Cast' reminder 😁
-                // Limit the input between Minimum & Maximum theirMarks (0 to 100)
+                // Limit the input between Minimum & Maximum TheirMarks (0 to 100)
                 // NOTE: the consolehelper is being used to ask the user for
                 // each student (their number and name are shown inline
                 // to make input easier to read. Note the student number
                 // has had to be tweaked at it started at 0.
-                theirMarks[i] = (int)ConsoleHelper.InputNumber
-                    ($"\nPlease enter the mark for student #" + (i + 1) + $" {myStudents[i]}: ", 0, 100);
+                TheirMarks[i] = (int)ConsoleHelper.InputNumber
+                    ($"\nPlease enter the mark for student #" + (i + 1) + $" {MyStudents[i]}: ", 0, 100);
             }
             // Now, go back to the main menu
             SelectChoice();
         }
         /// <summary>
-        /// Displays all the myStudents along with their Marks for the user to see
+        /// Displays all the MyStudents along with their Marks for the user to see
         /// </summary>
         public void OutputTheseMarks()
         {
@@ -97,9 +97,9 @@ namespace ConsoleAppProject.App03
             // foreach loop to go through the list of Students and grades
             // Call the ConvertToGrades method to convert the marks to grade values
 
-            for (int i = 0; i < myStudents.Length; i++)
+            for (int i = 0; i < MyStudents.Length; i++)
             {
-                Console.WriteLine($"Student No:{i + 1}\t{myStudents[i]}\t{theirMarks[i]}\t{ConvertToGrade(theirMarks[i])}");
+                Console.WriteLine($"Student No:{i + 1}\t{MyStudents[i]}\t{TheirMarks[i]}\t{ConvertToGrade(TheirMarks[i])}");
             }
             SelectChoice();
         }
@@ -138,22 +138,22 @@ namespace ConsoleAppProject.App03
         }
 
         /// <summary>
-        /// Calculate and output Minimum, Maximum and MeanMarks theirMarks for
-        /// all 10 myStudents
+        /// Calculate and output Minimum, Maximum and MeanMarks TheirMarks for
+        /// all 10 MyStudents
         /// </summary>
         public void CalculateStats()
         {
-            Minimum = theirMarks[0];
-            Maximum = theirMarks[0];
+            Minimum = TheirMarks[0];
+            Maximum = TheirMarks[0];
 
             double total = 0;
-            foreach (int mark in theirMarks)
+            foreach (int mark in TheirMarks)
             {
                 if (mark > Maximum) Maximum = mark;
                 if (mark < Minimum) Minimum = mark;
                 total += mark;
             }
-            MeanMarks = total / theirMarks.Length;
+            MeanMarks = total / TheirMarks.Length;
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace ConsoleAppProject.App03
                 Gradefile[i] = 0;
             }
 
-            foreach (int mark in theirMarks)
+            foreach (int mark in TheirMarks)
             {
                 Grades grade = ConvertToGrade(mark);
                 Gradefile[(int)grade]++;
@@ -176,7 +176,7 @@ namespace ConsoleAppProject.App03
 
 
         /// <summary>
-        /// Display the student mark statistics: MeanMarks, minumum and maximum theirMarks
+        /// Display the student mark statistics: MeanMarks, minumum and maximum TheirMarks
         /// Then when done, return to the main menu
         /// </summary>
         public void OutputTheStats()
@@ -194,30 +194,30 @@ namespace ConsoleAppProject.App03
         // Testing
         public void CalculateMax()
         {
-            Minimum = theirMarks[0];
-            Maximum = theirMarks[0];
+            Minimum = TheirMarks[0];
+            Maximum = TheirMarks[0];
 
             double total = 0;
-            foreach (int mark in theirMarks)
+            foreach (int mark in TheirMarks)
             {
                 if (mark > Maximum) Maximum = mark;
                 if (mark < Minimum) Minimum = mark;
-                MeanMarks = total / theirMarks.Length;
+                MeanMarks = total / TheirMarks.Length;
             }
         }
 
         // Testing
         public void CalculateMin()
         {
-            Minimum = theirMarks[0];
-            Maximum = theirMarks[0];
+            Minimum = TheirMarks[0];
+            Maximum = TheirMarks[0];
 
             double total = 0;
-            foreach (int mark in theirMarks)
+            foreach (int mark in TheirMarks)
             {
                 if (mark > Maximum) Maximum = mark;
                 if (mark < Minimum) Minimum = mark;
-                MeanMarks = total / theirMarks.Length;
+                MeanMarks = total / TheirMarks.Length;
             }
         }
 
@@ -235,7 +235,7 @@ namespace ConsoleAppProject.App03
             Grades grade = Grades.N;
             foreach (int count in Gradefile)
             {
-                int percent = count * 100 / theirMarks.Length;
+                int percent = count * 100 / TheirMarks.Length;
 
                 // Trying \t tabstops to make output easier to read
                 Console.WriteLine($"Grade {grade}\t {percent}% \tCount \t{count}");
@@ -264,7 +264,7 @@ namespace ConsoleAppProject.App03
 
             if (choice == 1)
             {
-                EnterTheMarks();
+                OutputTheseMarks();
             }
             else if (choice == 2)
             {
