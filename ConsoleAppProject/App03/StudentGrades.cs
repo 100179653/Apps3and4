@@ -80,7 +80,7 @@ namespace ConsoleAppProject.App03
             SelectChoice();
         }
         /// <summary>
-        /// This method can compared 
+        /// This method can compare  
         /// </summary>
         public void OutputTheseMarks()
         {
@@ -98,7 +98,7 @@ namespace ConsoleAppProject.App03
         }
 
         /// <summary>
-        /// Convert a student grade from F to A
+        /// Convert a student grade from F to A         
         /// </summary>
 
         public Grades ConvertToGrade(int mark)
@@ -184,13 +184,14 @@ namespace ConsoleAppProject.App03
             SelectChoice();
         }
 
-        // Testing
+        // TThis method is only used in Unit Testing
+        // It show
         public void CalculateMax()
         {
             Minimum = TheirMarks[0];
             Maximum = TheirMarks[100];
 
-            double total = ;
+            double total = 0;
             foreach (int mark in TheirMarks)
             {
                 if (mark > Maximum) Maximum = mark;
