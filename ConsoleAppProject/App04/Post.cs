@@ -69,6 +69,14 @@ namespace ConsoleAppProject.App04
         }
 
         ///<summary>
+        /// remove a comment to this post.
+        /// </summary>    
+        public void RemoveComment(String commentText)
+        {
+            comment.Remove(commentText);
+        }
+
+        ///<summary>
         /// Display the details of this post.
         /// (Currently: Print to the text terminal. This is simulating display 
         /// in a web browser for now.)

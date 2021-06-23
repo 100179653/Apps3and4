@@ -11,38 +11,31 @@ namespace ConsoleAppProject.App04
     /// <author>
     /// Michael Kölling and David J. Barnes
     /// @version 0.1
-    /// Edited by Phill Horrocks
+    /// Edited by Chris Edgley
     /// </author>
     public class PhotoPost : Post
     {
 
         // the name of the image file
-        public String Filename { get; set; }
+        public String Name { get; set; }
         
         // a one line image caption
-        public String Caption { get; set; }   
+        public String Details { get; set; }   
         
         ///<summary>
-        /// Constructor for objects of class PhotoPost.
+        /// This constructs the class PhotoPost
+        /// It allows the creation photos being
+        /// able to be produce posts with a photo
         ///</summary>
-        /// <param name="author">
-        /// The username of the author of this post.
-        /// </param>
-        /// <param name="caption">
-        /// A caption for the image.
-        /// </param>
-        /// <param name="filename">
-        /// The filename of the image in this post.
-        /// </param>
-        public PhotoPost(String author, String filename, String caption): base(author)
+        public PhotoPost(String User, string Name, String Details): base(User)
         {
-            this.Filename = filename;
-            this.Caption = caption;
+            this.Name = Name;
+            this.Details = Details;
         }
         public override void Display()
         {
-            Console.WriteLine($"    Filename: [{Filename}]");
-            Console.WriteLine($"    Caption: {Caption}");
+            Console.WriteLine($"    name of the file: [{Name}]");
+            Console.WriteLine($"    Caption: {Details}");
             base.Display();
         }
     }

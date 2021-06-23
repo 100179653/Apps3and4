@@ -6,21 +6,16 @@ namespace ConsoleAppProject.App04
     /// The NewsFeed class stores news posts for the news feed in a social network 
     /// application.
     /// 
-    /// Display of the posts is currently simulated by printing the details to the
-    /// terminal. (Later, this should display in a browser.)
-    /// 
-    /// This version does not save the data to disk, and it does not provide any
-    /// search or ordering functions.
     ///</summary>
     ///<author>
     ///  Michael Kölling and David J. Barnes
     ///  version 0.1
-    ///  Edited by Phill Horrocks
-    ///  Date: 26/03/21
+    ///  Edited by Chris Edgley
+    ///  
     ///</author> 
     public class NewsFeed
     {
-        public const string author = "Phill"; // Testing by setting constant variable
+        
         private readonly List<Post> posts;
 
         ///<summary>
@@ -93,6 +88,65 @@ namespace ConsoleAppProject.App04
             }
         }
 
+        ///<summary>
+        /// Show the news feed. Currently: print the news feed details to the
+        /// terminal. (TODO: replace this later with display in web browser.)
+        ///</summary>
+        public void Display()
+        {
+            foreach (Post post in posts)
+            {
+                post.Display();
+                Console.WriteLine("\n--------------------------\n");
+            }
+        }
+
+        /// <summary>
+        /// Locate a specific post ID within the posts by trying to
+        /// match the ID passed to an ID already in the system
+        /// </summary>
+        public Post FindPost(int id)
+        {
+            foreach (Post post in posts)
+            {
+                if (post.PostNumber == id)
+                {
+                    return post;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Display all posts by a specified date.
+        /// </summary>
+        /// 
+        public void DisplayPostsByDate(string date)
+        {
+            foreach (Post post in posts)
+            {
+                if (post.TimeSet.ToLongDateString().Contains(date))
+                {
+                    post.Display();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Display all posts by a specified author.
+        /// NOTE: This could really do wirh proper error handling
+        /// </summary>
+        public void DisplayPostsByAuthor(string author)
+        {
+            foreach (Post post in posts)
+            {
+                if (post.User == author)
+                {
+                    post.Display();
+                }
+            }
+        }
+
         /// <summary>
         /// Add a like to a post. First check to see if the post exists
         /// </summary>
@@ -128,68 +182,5 @@ namespace ConsoleAppProject.App04
             }
             post.UnlikePost();
         }
-
-        ///<summary>
-        /// Show the news feed. Currently: print the news feed details to the
-        /// terminal. (TODO: replace this later with display in web browser.)
-        ///</summary>
-        public void Display()
-        {
-            foreach (Post post in posts)
-            {
-                post.Display();
-                Console.WriteLine("\n--------------------------\n");
-            }
-        }
-
-        /// <summary>
-        /// Locate a specific post ID within the posts by trying to
-        /// match the ID passed to an ID already in the system
-        /// </summary>
-        public Post FindPost(int id)
-        {
-            foreach (Post post in posts)
-            {
-                if (post.PostNumber == id)
-                {
-                    return post;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Display all posts by a specified date.
-        /// NOTE: I can only really get this to work by using a ToLongDateString method
-        /// as found detailed: https://www.tutorialspoint.com/datetime-tolongdatestring-method-in-chash
-        /// We need to pass in the Timestamp to the ToLongDateString in order to see if it
-        /// contains the user entered date string. Could also do with some error handling
-        /// </summary>
-        /// 
-        public void DisplayPostsByDate(string date)
-        {
-            foreach (Post post in posts)
-            {
-                if (post.TimeSet.ToLongDateString().Contains(date))
-                {
-                    post.Display();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Display all posts by a specified author.
-        /// NOTE: This could really do wirh proper error handling
-        /// </summary>
-        public void DisplayPostsByAuthor(string author)
-        {
-            foreach (Post post in posts)
-            {
-                if (post.User == author)
-                {
-                    post.Display();
-                }
-            }
-        } 
     }
 }
