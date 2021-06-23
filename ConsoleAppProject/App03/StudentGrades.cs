@@ -31,7 +31,7 @@ namespace ConsoleAppProject.App03
         public int[] TheirMarks { get; set; }
         public int[] Gradefile { get; set; }
 
-  
+        // This establishes all the students for the app
         public StudentGrades()
         {
             MyStudents = new string[]
@@ -80,15 +80,14 @@ namespace ConsoleAppProject.App03
             SelectChoice();
         }
         /// <summary>
-        /// This method can compare  
+        /// This method can compare the smallest, biggest and average mark  
         /// </summary>
         public void OutputTheseMarks()
         {
 
             ConsoleHelper.OutputTitle("\nStudent Grades");
 
-            /// foreach loop to go through the list of Students and grades
-            /// Call the ConvertToGrades method to convert the marks to grade values
+            /// s
 
             for (int i = 0; i < MyStudents.Length; i++)
             {
@@ -223,15 +222,14 @@ namespace ConsoleAppProject.App03
         public void OutputGradefile()
         {
             CalculateGradefile();
-            // Start with the default grade of N (NA)
-            // TODO: Do not need to display the 'N' grade in the output
+
             ConsoleHelper.OutputTitle("\n## Student Grades ##\n");
             Grades grade = Grades.N;
             foreach (int count in Gradefile)
             {
                 int percent = count * 100 / TheirMarks.Length;
 
-                // Trying \t tabstops to make output easier to read
+                /
                 Console.WriteLine($"Grade {grade}\t {percent}% \tCount \t{count}");
                 grade++;
             }
@@ -247,6 +245,7 @@ namespace ConsoleAppProject.App03
         /// 3. Display Stats
         /// 4. Display Grade Profile
         /// 5. Quit the program
+        /// anything else just displays an error screen and lets you retry
         /// </summary>
         public void SelectChoice()
         {
@@ -279,7 +278,7 @@ namespace ConsoleAppProject.App03
             else
             {
                 Console.WriteLine("* Error. Please select a choice (1-5 *");                                                                                   
-                SelectChoice(); // Loop back to choose again
+                SelectChoice(); 
             }
         }
 
