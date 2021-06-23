@@ -108,7 +108,7 @@ namespace ConsoleAppProject.App04
             {
                 Console.WriteLine($"\nLike added to post ID {id}");
             }
-            post.Like();
+            post.LikePost();
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace ConsoleAppProject.App04
             {
                 Console.WriteLine($"\nUnliked post ID {id}");
             }
-            post.Unlike();
+            post.UnlikePost();
         }
 
         ///<summary>
@@ -150,7 +150,7 @@ namespace ConsoleAppProject.App04
         {
             foreach (Post post in posts)
             {
-                if (post.PostID == id)
+                if (post.PostNumber == id)
                 {
                     return post;
                 }
@@ -170,7 +170,7 @@ namespace ConsoleAppProject.App04
         {
             foreach (Post post in posts)
             {
-                if (post.Timestamp.ToLongDateString().Contains(date))
+                if (post.TimeSet.ToLongDateString().Contains(date))
                 {
                     post.Display();
                 }
@@ -185,7 +185,7 @@ namespace ConsoleAppProject.App04
         {
             foreach (Post post in posts)
             {
-                if (post.Username == author)
+                if (post.User == author)
                 {
                     post.Display();
                 }

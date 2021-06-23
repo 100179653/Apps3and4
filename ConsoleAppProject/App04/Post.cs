@@ -1,45 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleAppProject.App04
 {
     public class Post
     {
-        private int likes;
+        public static int instance = 0;
 
-        private readonly List<String> comments;
+        public String User { get; }
 
-        public int PostID { get; }
+        public DateTime TimeSet { get; }
 
-        public static int instances = 0;
+        private int like;
 
-        public String Username { get; }
+        private readonly List<String> comment;
 
-        public DateTime Timestamp { get; }
+        public int PostNumber { get; }
 
-        public Post(string author)
+        public Post(string poster)
         {
-            instances++;
-            this.Username = author;
-            Timestamp = DateTime.Now;
-            likes = 0;
-            comments = new List<String>();
-            PostID = instances;
+            instance++;
+            User = poster;
+            TimeSet = DateTime.Now;
+            like = 0;
+            comment = new List<String>();
+            PostNumber = instance;
         }
 
         // Get number of posts
-        public static int GetNumberOfPosts()
+        public static int GetPosts()
         {
-            return instances;
+            return instance;
         }
 
         /// <summary>
         /// Record one more 'Like' indication from a user.
         /// </summary>
-        public void Like()
+        public void LikePost()
         {
-            likes++;
+            like++;
+            Console.WriteLine("You have successfully liked this post!");
         }
 
         ///<summary>
@@ -47,11 +47,16 @@ namespace ConsoleAppProject.App04
         /// Ensure this can be done only if the like count is greater
         /// than zero
         ///</summary>
-        public void Unlike()
+        public void UnlikePost()
         {
-            if (likes > 0)
+            if (like > 0)
             {
-                likes--;
+                like = like - 1;
+                Console.WriteLine("You have successfully unliked this post!");
+            }
+            else
+            {
+                Console.WriteLine("You can not unlike a post with no likes!");
             }
         }
 
@@ -60,7 +65,7 @@ namespace ConsoleAppProject.App04
         /// </summary>    
         public void AddComment(String commentText)
         {
-            comments.Add(commentText);
+            comment.Add(commentText);
         }
 
         ///<summary>
@@ -71,23 +76,23 @@ namespace ConsoleAppProject.App04
         public virtual void Display()
         {
             Console.WriteLine();
-            Console.WriteLine($"    Post ID#:     {PostID}");
-            Console.WriteLine($"    Author:       {Username}");
-            Console.WriteLine($"    Time Elpased: {FormatElapsedTime(Timestamp)}");
+            Console.WriteLine($"    Post Number:     {PostNumber}");
+            Console.WriteLine($"    User who made the post:       {User}");
+            Console.WriteLine($"    Time since the post was made: {FormatElapsedTime(TimeSet)}");
             Console.WriteLine();
 
-            if (likes > 0)
+            if (like > 0)
             {
-                Console.WriteLine($"    Likes:  {likes}  people like this.");
+                Console.WriteLine($"    Likes:  {like}  have liked this post.");
             }
             else
             {
                 Console.WriteLine();
             }
 
-            if (comments.Count == 0)
+            if (comment.Count == 0)
             {
-                Console.WriteLine("    No comments.");
+                Console.WriteLine("    There have been no comments made.");
             }
             else
             {
@@ -102,8 +107,8 @@ namespace ConsoleAppProject.App04
         public void DisplayComments()
         {
             int commentNumber = 0;
-            Console.WriteLine($"    {comments.Count}  comment(s)");
-            foreach (string comment in comments)
+            Console.WriteLine($"    There are    {comment.Count}  comment(s)");
+            foreach (string comment in comment)
             {
                 commentNumber++;
                 Console.WriteLine($"    Comment: {commentNumber}    {comment}\n");

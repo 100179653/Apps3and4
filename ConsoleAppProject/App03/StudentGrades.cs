@@ -229,7 +229,7 @@ namespace ConsoleAppProject.App03
             {
                 int percent = count * 100 / TheirMarks.Length;
 
-                /
+                
                 Console.WriteLine($"Grade {grade}\t {percent}% \tCount \t{count}");
                 grade++;
             }

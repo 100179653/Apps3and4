@@ -15,7 +15,7 @@ namespace ConsoleAppProject.App04
     /// </summary>
     public class NetworkApp
     {
-        private NewsFeed news = new NewsFeed();
+        private readonly NewsFeed news = new NewsFeed();
         public void DisplayMenu()
         {
             ConsoleHelper.OutputHeading("NetworkApp");
@@ -149,7 +149,7 @@ namespace ConsoleAppProject.App04
         private void RemovePost()
         {
             ConsoleHelper.OutputTitle("** REMOVE A POST **");
-            int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to delete: ", 1, Post.GetNumberOfPosts());
+            int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to delete: ", 1, Post.GetPosts());
             news.RemovePost(id);
         }
 
@@ -160,7 +160,7 @@ namespace ConsoleAppProject.App04
         {
             //throw new NotImplementedException();
             ConsoleHelper.OutputTitle("** ADD COMMENT **");
-            int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to add a comment: ", 1, Post.GetNumberOfPosts());
+            int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to add a comment: ", 1, Post.GetPosts());
 
             Console.Write("    # Please enter your comment: ");
             string comment = Console.ReadLine();
@@ -181,12 +181,12 @@ namespace ConsoleAppProject.App04
 
             if(likeOrUnlike == "1")
             {
-                int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to add a like: ", 1, Post.GetNumberOfPosts());
+                int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to add a like: ", 1, Post.GetPosts());
                 news.AddLike(id);
             }
             else if (likeOrUnlike == "2")
             {
-                int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to add a unlike: ", 1, Post.GetNumberOfPosts());
+                int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to add a unlike: ", 1, Post.GetPosts());
                 news.UnlikePost(id);
             } 
         }
