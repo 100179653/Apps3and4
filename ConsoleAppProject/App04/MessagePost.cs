@@ -10,8 +10,8 @@ namespace ConsoleAppProject.App04
     /// </summary>
     /// <author>
     /// Michael Kölling and David J. Barnes
-    /// Edited by Phill Horrocks
-    /// version 0.1
+    /// Edited by Chris Edgley
+    /// version 1.0
     /// </author>
     public class MessagePost : Post
     {

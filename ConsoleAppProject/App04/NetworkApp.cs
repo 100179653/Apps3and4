@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App04
@@ -10,8 +8,8 @@ namespace ConsoleAppProject.App04
     /// within the scope of this app. Loop this menu while
     /// the boolean condition for quitting is false.
     /// 
-    /// Phill Horrocks | 100170355
-    /// v0.8 (provisionally)
+    /// Chris Edgley
+    /// 
     /// </summary>
     public class NetworkApp
     {
@@ -210,9 +208,5 @@ namespace ConsoleAppProject.App04
         {
             Console.WriteLine("Your message was posted sucessfully");
         }
-    }
-    //66 121 32 80 104 105 108 108 32 72
-    //111 114 114 111 99 107 115 32 50
-    //48 50 49 32 124 32 49 48 48 49 55
-    //48 51 53 53 
+    } 
 }
