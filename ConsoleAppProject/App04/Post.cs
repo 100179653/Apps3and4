@@ -27,26 +27,21 @@ namespace ConsoleAppProject.App04
             PostNumber = instance;
         }
 
-        // Get number of posts
+        // This method gets number of posts
         public static int GetPosts()
         {
             return instance;
         }
 
-        /// <summary>
-        /// Record one more 'Like' indication from a user.
-        /// </summary>
+        // This methods allows a user to like a post
         public void LikePost()
         {
             like++;
             Console.WriteLine("You have successfully liked this post!");
         }
 
-        ///<summary>
-        /// Record that a user has withdrawn his/her 'Like' vote.
-        /// Ensure this can be done only if the like count is greater
-        /// than zero
-        ///</summary>
+        // This method allows a user to unlike a post
+        // Likes can not be removed if there are 0 likes
         public void UnlikePost()
         {
             if (like > 0)
@@ -59,28 +54,20 @@ namespace ConsoleAppProject.App04
                 Console.WriteLine("You can not unlike a post with no likes!");
             }
         }
-
-        ///<summary>
-        /// Add a comment to this post.
-        /// </summary>    
+        
+        // This method allows a user to add a comment to a post
         public void AddComment(String commentText)
         {
             comment.Add(commentText);
         }
 
-        ///<summary>
-        /// remove a comment to this post.
-        /// </summary>    
+        // This method allows a user remove a comment to a post   
         public void RemoveComment(String commentText)
         {
             comment.Remove(commentText);
         }
 
-        ///<summary>
-        /// Display the details of this post.
-        /// (Currently: Print to the text terminal. This is simulating display 
-        /// in a web browser for now.)
-        ///</summary>
+        // This method prints the post to the console
         public virtual void Display()
         {
             Console.WriteLine();
@@ -108,10 +95,7 @@ namespace ConsoleAppProject.App04
             }
         }
 
-        /// <summary>
-        /// Refactored as it made sense to have the display comments
-        /// as a separate method
-        /// </summary>
+        // This method allows a user to see the comments made on a post
         public void DisplayComments()
         {
             int commentNumber = 0;
@@ -122,18 +106,9 @@ namespace ConsoleAppProject.App04
                 Console.WriteLine($"    Comment: {commentNumber}    {comment}\n");
             }
         }
-
-        ///<summary>
-        /// Create a string describing a time point in the past in terms 
-        /// relative to current time, such as "30 seconds ago" or "7 minutes ago".
-        /// Currently, only seconds and minutes are used for the string.
-        /// </summary>
-        /// <param name="time">
-        ///  The time value to convert (in system milliseconds)
-        /// </param> 
-        /// <returns>
-        /// A relative time string for the given time
-        /// </returns>      
+        
+        // This method enables the posts to have a specific time posted
+        // Then can be used to show how long age the post was made
         private String FormatElapsedTime(DateTime time)
         {
             DateTime current = DateTime.Now;

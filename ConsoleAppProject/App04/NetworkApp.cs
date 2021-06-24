@@ -16,53 +16,53 @@ namespace ConsoleAppProject.App04
         private readonly NewsFeed news = new NewsFeed();
         public void DisplayMenu()
         {
-            ConsoleHelper.OutputHeading("NetworkApp");
+            ConsoleHelper.OutputHeading("---Network App---");
 
             DisplayCurrentDateAndTime();
 
             string[] choices = new string[]
             {
-                "Post a message",
-                "Post an image",
-                "Display all posts",
-                "Display posts by date",
-                "Display posts by author",
+                "Make a message Post",
+                "Make an Image Post",
                 "Remove a post",
-                "Add a comment",
-                "Like or Unlike a post",
-                "Quit the app"
+                "Add a comment to a Post",
+                "Like/Unlike a post",
+                "Show all users' Posts",
+                "Filter posts by Date/Time",
+                "Display Posts by User",
+                "Close the Social Network App",
             };
 
             bool wantToQuit = false;
             do
             {
-                ConsoleHelper.OutputTitle("Main Menu");
+                ConsoleHelper.OutputTitle("--Main Menu--");
                 int choice = ConsoleHelper.SelectChoice(choices);
                 switch (choice)
                 {
                     case 1: PostMessage(); break;
                     case 2: PostImage(); break;
-                    case 3: DisplayAll(); break;
-                    case 4: DisplayByDate(); break;
-                    case 5: DisplayByAuthor(); break;
-                    case 6: RemovePost(); break;
-                    case 7: AddComment(); break;
-                    case 8: LikeOrUnlikePost(); break;
+                    case 3: RemovePost(); break;
+                    case 4: AddComment(); break;
+                    case 5: LikeOrUnlikePost(); break;
+                    case 6: DisplayAll(); break;
+                    case 7: DisplayByDate(); break;
+                    case 8: DisplayByAuthor(); break;
                     case 9: wantToQuit = true; break;
                 }
             } while (!wantToQuit);
         }
 
         /// <summary>
-        /// Given that we're going to be asking for an author name throughout
+        /// Given that we're going to be asking for an user name throughout
         /// this app, it makes sense to implement a specific method for
-        /// getting the 'author' that we can re-use.
+        /// getting the 'user' that we can re-use.
         /// </summary>
         public string InputName()
         {
-            Console.Write("    # Please enter your name: ");
-            string author = Console.ReadLine();
-            return author; // pass the string back out
+            Console.Write(" Please enter your name: ");
+            string user = Console.ReadLine();
+            return user; // pass the string back out
         }
 
         /// <summary>
@@ -72,13 +72,13 @@ namespace ConsoleAppProject.App04
         /// </summary>
         private void PostMessage()
         {
-            ConsoleHelper.OutputTitle("** POST A MESSAGE **");
-            string author = InputName();
+            ConsoleHelper.OutputTitle("Posting a Message");
+            string user = InputName();
 
-            Console.Write("    # Enter your message: ");
+            Console.Write(" Please enter your message: ");
             string message = Console.ReadLine();
             
-            MessagePost post = new MessagePost(author, message);
+            MessagePost post = new MessagePost(user, message);
             news.AddMessagePost(post);
             PostSuccessMessage();
             post.Display();
@@ -87,21 +87,21 @@ namespace ConsoleAppProject.App04
         /// <summary>
         /// Add a photo message; ask the user for their name then
         /// ask for an image filename followed by an image caption.
-        /// Pass the author, filename and caption to AddPhotoPost 
+        /// Pass the user, filename and caption to AddPhotoPost 
         /// then display the message.
         /// </summary>
         private void PostImage()
         {
-            ConsoleHelper.OutputTitle("** POST AN IMAGE **");
-            string author = InputName();
+            ConsoleHelper.OutputTitle("Posting an Image");
+            string user = InputName();
 
-            Console.Write("    # Please enter image filename: ");
+            Console.Write("Please enter the image file location: ");
             string filename = Console.ReadLine();
 
-            Console.Write("    # Please enter image caption: ");
+            Console.Write("Please enter what you would like as the caption: ");
             string caption = Console.ReadLine();
 
-            PhotoPost post = new PhotoPost(author, filename, caption);
+            PhotoPost post = new PhotoPost(user, filename, caption);
             news.AddPhotoPost(post);
             PostSuccessMessage();
             post.Display();
@@ -112,7 +112,7 @@ namespace ConsoleAppProject.App04
         /// </summary>
         private void DisplayAll()
         {
-            ConsoleHelper.OutputTitle("** DISPLAY ALL POSTS **");
+            ConsoleHelper.OutputTitle("Displaying all Post");
             news.Display();
         }
 
@@ -122,22 +122,22 @@ namespace ConsoleAppProject.App04
         /// </summary>
         private void DisplayByDate()
         {
-            ConsoleHelper.OutputTitle("** DISPLAY POSTS BY DATE **");
-            Console.Write(" Please enter the date (month) to display posts: ");
+            ConsoleHelper.OutputTitle("Displaying all posts by Date and Time");
+            Console.Write(" Please enter the month of the area of posts you wish to see: ");
             string date = Console.ReadLine();
-            ConsoleHelper.OutputTitle($" Displaying posts by date: {date}");
+            ConsoleHelper.OutputTitle($" Displaying posts by month: {date}");
             news.DisplayPostsByDate(date);
         }
         /// <summary>
-        /// Display all posts by a specific author
+        /// Display all posts by a specific user
         /// </summary>
         private void DisplayByAuthor()
         {
-            ConsoleHelper.OutputTitle("** DISPLAY POSTS BY AUTHOR **");
-            Console.Write(" Please enter the name of the author: ");
-            string author = Console.ReadLine();
-            ConsoleHelper.OutputTitle($" Displaying posts by author: {author}");
-            news.DisplayPostsByAuthor(author);
+            ConsoleHelper.OutputTitle("Displaying all posts by the User");
+            Console.Write(" Please enter the user's name: ");
+            string user = Console.ReadLine();
+            ConsoleHelper.OutputTitle($" Displaying posts by user: {user}");
+            news.DisplayPostsByAuthor(user);
         }
 
         /// <summary>
@@ -146,8 +146,8 @@ namespace ConsoleAppProject.App04
         /// </summary>
         private void RemovePost()
         {
-            ConsoleHelper.OutputTitle("** REMOVE A POST **");
-            int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to delete: ", 1, Post.GetPosts());
+            ConsoleHelper.OutputTitle("Removing a Post");
+            int id = (int)ConsoleHelper.InputNumber("Please enter the number of which post to delete: ", 1, Post.GetPosts());
             news.RemovePost(id);
         }
 
@@ -156,9 +156,9 @@ namespace ConsoleAppProject.App04
         /// </summary>
         private void AddComment()
         {
-            //throw new NotImplementedException();
-            ConsoleHelper.OutputTitle("** ADD COMMENT **");
-            int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to add a comment: ", 1, Post.GetPosts());
+            
+            ConsoleHelper.OutputTitle("Adding a comment to a Post");
+            int id = (int)ConsoleHelper.InputNumber("Please enter the number of which post to add a comment to: ", 1, Post.GetPosts());
 
             Console.Write("    # Please enter your comment: ");
             string comment = Console.ReadLine();
@@ -170,21 +170,19 @@ namespace ConsoleAppProject.App04
         /// </summary>
         private void LikeOrUnlikePost()
         {
-            ConsoleHelper.OutputTitle("** LIKE OR UNLIKE A POST **");
+            ConsoleHelper.OutputTitle("Liking/Unliking of Posts");
 
-            // TODO: Display a list of posts with ID's before choosing?
-
-            Console.Write("    # Would you like to (1) Like or (2) unlike a post?: ");
+            Console.Write("    # Would you rather (1) Unlike or (2) Like a post?: ");
             string likeOrUnlike = Console.ReadLine();
 
-            if(likeOrUnlike == "1")
+            if(likeOrUnlike == "2")
             {
-                int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to add a like: ", 1, Post.GetPosts());
+                int id = (int)ConsoleHelper.InputNumber("Please enter the number of which post to add a like to: ", 1, Post.GetPosts());
                 news.AddLike(id);
             }
-            else if (likeOrUnlike == "2")
+            else if (likeOrUnlike == "1")
             {
-                int id = (int)ConsoleHelper.InputNumber("    # Please enter the post ID to add a unlike: ", 1, Post.GetPosts());
+                int id = (int)ConsoleHelper.InputNumber("Please enter the number of which post to remove a like from: ", 1, Post.GetPosts());
                 news.UnlikePost(id);
             } 
         }
@@ -195,9 +193,10 @@ namespace ConsoleAppProject.App04
         private void DisplayCurrentDateAndTime()
         {
             DateTime dateTime = DateTime.Now;
-            Console.WriteLine("\tCurrent Date: " + dateTime.ToLongDateString());
-            Console.WriteLine("\tCurrent Time: " + dateTime.ToLongTimeString());
-            Console.WriteLine("\t-=-=-=-=-=-=-=-=-=-=-=-=-\n");
+            Console.WriteLine("\t---------------------------\n");
+            Console.WriteLine("\tThe Current Date is: " + dateTime.ToLongDateString());
+            Console.WriteLine("\tThe Current Time is: " + dateTime.ToLongTimeString());
+            Console.WriteLine("\t---------------------------\n");
         }
 
         /// <summary>
@@ -206,7 +205,7 @@ namespace ConsoleAppProject.App04
         /// </summary>
         private void PostSuccessMessage()
         {
-            Console.WriteLine("Your message was posted sucessfully");
+            Console.WriteLine("Your message was posted sucessfully!");
         }
     } 
 }

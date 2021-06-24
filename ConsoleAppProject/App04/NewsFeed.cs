@@ -7,12 +7,12 @@ namespace ConsoleAppProject.App04
     /// application.
     /// 
     ///</summary>
-    ///<author>
+    ///<user>
     ///  Michael Kölling and David J. Barnes
     ///  version 0.1
     ///  Edited by Chris Edgley
     ///  
-    ///</author> 
+    ///</user> 
     public class NewsFeed
     {
         
@@ -119,20 +119,16 @@ namespace ConsoleAppProject.App04
         }
 
         /// <summary>
-        /// Display all posts by a specified author.
+        /// Display all posts by a specified user.
         /// 
         /// </summary>
-        public void DisplayPostsByAuthor(string author)
+        public void DisplayPostsByAuthor(string user)
         {
             foreach (Post post in posts)
             {
-                if (post.User == author)
+                if (post.User == user)
                 {
                     post.Display();
-                }
-                else if (post.User != author)
-                {
-                    Console.WriteLine("No posts by this author can be found");
                 }
             }
         }

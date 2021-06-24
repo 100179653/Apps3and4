@@ -6,13 +6,13 @@ namespace ConsoleAppProject.App04
     ///<summary>
     /// This class stores information about a post in a social network. 
     /// The main part of the post consists of a photo and a caption. 
-    /// Other data, such as author and time, are also stored.
+    /// Other data, such as user and time, are also stored.
     ///</summary>
-    /// <author>
+    /// <user>
     /// Michael Kölling and David J. Barnes
     /// @version 0.1
     /// Edited by Chris Edgley
-    /// </author>
+    /// </user>
     public class PhotoPost : Post
     {
 

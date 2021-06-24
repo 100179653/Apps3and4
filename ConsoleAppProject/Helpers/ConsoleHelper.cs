@@ -10,9 +10,9 @@ namespace ConsoleAppProject.Helpers
     /// user to select a choice from a list of choices.
     /// There are methods for outputting a main heading
     /// and a title.
-    /// <author>
+    /// <user>
     /// Chris Edgley 
-    /// </author>
+    /// </user>
     /// </summary>
     public static class ConsoleHelper
     {
@@ -30,8 +30,8 @@ namespace ConsoleAppProject.Helpers
 
             // Get the user's choice
 
-            int choiceNo = (int)InputNumber("\n Enter your option: ", 1, choices.Length);
-            return choiceNo;
+            int choiceNumber = (int)InputNumber("\n Enter your option: ", 1, choices.Length);
+            return choiceNumber;
         }
 
         /// <summary>
@@ -40,12 +40,12 @@ namespace ConsoleAppProject.Helpers
         /// </summary>
         private static void DisplayChoices(string[] choices)
         {
-            int choiceNo = 0;
+            int choiceNumber = 0;
 
             foreach (string choice in choices)
             {
-                choiceNo++;
-                Console.WriteLine($"    {choiceNo}.  {choice}");
+                choiceNumber++;
+                Console.WriteLine($"    {choiceNumber}.  {choice}");
             }
         }
 
@@ -116,7 +116,7 @@ namespace ConsoleAppProject.Helpers
 
         /// <summary>
         /// Output a short heading in green for the application
-        /// and the name of the author and a prompt to
+        /// and the name of the user and a prompt to
         /// inform the use which units are being converted
         /// Please change the authors name.
 
